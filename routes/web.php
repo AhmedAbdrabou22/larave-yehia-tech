@@ -23,6 +23,7 @@ Route::get('/post-delete',[PostController::class,'delete']);
 Route::get('/company',[CompanyController::class,'index']);
 Route::get('/company/create',[CompanyController::class,'create']);
 Route::get('/company/{id}',[CompanyController::class,'show']);
+Route::get('/company-delete',[CompanyController::class,'delete']);
 
 
 Route::get('/comments',[CommentController::class,'index']);

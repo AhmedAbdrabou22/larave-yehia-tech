@@ -19,12 +19,19 @@ class CompanyController extends Controller
         return view('companies.show', ['company' => $company]);
     }
 
+    public function delete(){
+        Companys::destroy(1);
+                return redirect('/company');
+
+    }
+
     public function create()
     {
         Companys::create([
-            'name' => "Master Vision",
-            "desc" => "SoftWare Company",
-            "numEm" => 3,
+            'name' => "WE DO",
+            "desc" => "WE DO Marketing Solutions",
+            "numEm" => 10,
+            "ceo"=>"Tamer"
         ]);
     }
 }
