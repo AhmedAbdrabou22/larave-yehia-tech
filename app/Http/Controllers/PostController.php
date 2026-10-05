@@ -28,12 +28,20 @@ class PostController extends Controller
 
     public function create(){
         Post::create([
-            "title"=>"Keep it short: Aim for 5 to 10 words or under 60 characters so it fits well on search engines.",
+            "title"=>"POST Tech About Front End Development",
             "body"=>"A post title is essential to grab the attention of your visitors to click on your content. In most cases, it is used in the SEO Title as well and plays a crucial role in compelling the searchers to click through the search results.",
-            "author"=>"aaa",
+            "author"=>"Ahmed Abdrabou",
             "published"=>true,
         ]);
 
         return redirect("/post");
+    }
+
+    public function postATags ($id){
+        $post = Post::findOrFail($id);
+        return response()->json([
+            "Post"=>$post,
+            "Tags"=>$post->tags,
+        ]);
     }
 }
