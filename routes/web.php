@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
@@ -39,3 +40,5 @@ Route::get('/tag',[TagController::class,'index']);
 Route::get('/tag/create',[TagController::class,'create']);
 Route::get('/tag/testTags',[TagController::class,'testTags']);
 
+Route::get('/cars',[CarController::class,'index']);
+Route::get('/cars/create',[CarController::class,'create']);

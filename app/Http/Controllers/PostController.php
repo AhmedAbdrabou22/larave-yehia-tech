@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Faker\Factory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(){
-        $data = Post::all();
+    public function index()
+    {
+        $data = Post::paginate(10);
 
-        return view('post.index',["posts"=>$data]);
+        return view('post.index', ["posts" => $data]);
     }
 
-    public function show ($id){
+    public function show($id)
+    {
         $post = Post::findOrFail($id);
-        return view("post.show",["post"=>$post]);
+        return view("post.show", ["post" => $post]);
     }
 
-     public function delete (){
+    public function delete()
+    {
         // $post = Post::findOrFail($id);
         //  $post->delete();
         // return redirect('/post');
@@ -26,22 +30,18 @@ class PostController extends Controller
     }
 
 
-    public function create(){
-        Post::create([
-            "title"=>"POST Tech About Front End Development",
-            "body"=>"A post title is essential to grab the attention of your visitors to click on your content. In most cases, it is used in the SEO Title as well and plays a crucial role in compelling the searchers to click through the search results.",
-            "author"=>"Ahmed Abdrabou",
-            "published"=>true,
-        ]);
-
+    public function create()
+    {
+        Post::factory(100)->create();
         return redirect("/post");
     }
 
-    public function postATags ($id){
+    public function postATags($id)
+    {
         $post = Post::findOrFail($id);
         return response()->json([
-            "Post"=>$post,
-            "Tags"=>$post->tags,
+            "Post" => $post,
+            "Tags" => $post->tags,
         ]);
     }
 }
