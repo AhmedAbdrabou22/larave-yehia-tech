@@ -3,45 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Faker\Factory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $data = Post::paginate(10);
 
-        return view('post.index', ["posts" => $data]);
+        // return response()->json([
+        //     "data" => $data,
+        // ]);
+        return view("post.index", ["posts" => $data]);
     }
 
-    public function show($id)
-    {
-        $post = Post::findOrFail($id);
-        return view("post.show", ["post" => $post]);
-    }
-
-    public function delete()
-    {
-        // $post = Post::findOrFail($id);
-        //  $post->delete();
-        // return redirect('/post');
-        Post::destroy(1);
-    }
-
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        Post::factory(100)->create();
-        return redirect("/post");
+        //
     }
 
-    public function postATags($id)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $post = Post::findOrFail($id);
-        return response()->json([
-            "Post" => $post,
-            "Tags" => $post->tags,
-        ]);
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

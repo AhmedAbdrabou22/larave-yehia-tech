@@ -6,9 +6,6 @@
             <h1 class="text-4xl font-bold tracking-tight text-gray-900">
                 Blog Posts
             </h1>
-            <p class="mt-2 text-gray-500">
-                {{ $posts->count() }} {{ Str::plural('post', $posts->count()) }} available
-            </p>
         </header>
 
         {{-- Posts List --}}
